@@ -10,9 +10,31 @@ $('.operation').each(function() {
   });
 });
 
+// color hover
+$('.operation').each(function() {
+  $(this).on('mouseenter', function(){
+      $(this).removeClass( "bg-light" );
+      $(this).addClass( "bg-secondary" );
+  });
+  $(this).on('mouseleave', function(){
+    $(this).removeClass("bg-secondary");
+    $(this).addClass("bg-light");
+  });
+});
+
 // action
 $('.equal').on('click', function(){
   equal();
+});
+
+// color hover equal key
+$('.equal').on('mouseenter', function(){
+  $( this ).removeClass( "bg-light" );
+  $( this ).addClass( "bg-danger" ).children().addClass( "text-white");
+});
+$('.equal').on('mouseleave', function(){
+  $( this ).removeClass( "bg-danger" ).children().removeClass( "text-white");
+  $( this ).addClass( "bg-light" );
 });
 
 // delete operation
@@ -21,11 +43,32 @@ $('.ac').on('click', function(){
   ce();
 });
 
+// color hover ac key
+$('.ac').on('mouseenter', function(){
+  $( this ).removeClass( "bg-light" );
+  $( this ).addClass( "bg-info").children().addClass( "text-white");
+});
+$('.ac').on('mouseleave', function(){
+  $( this ).removeClass( "bg-info" ).children().removeClass( "text-white");
+  $( this ).addClass( "bg-light" );
+});
+
 // delete last entry
 $('.ce').on('click', function(){
   calcul.pop();
   myOperation();
-  if (calcul.length == 0) {$(".result").children().text('0')}
+  if (calcul.length == 0) {
+    $(".result").children().text('0')
+  }
+});
+// color hover ce key
+$('.ce').on('mouseenter', function(){
+  $( this ).removeClass( "bg-light" );
+  $( this ).addClass( "bg-info").children().addClass( "text-white");
+});
+$('.ce').on('mouseleave', function(){
+  $( this ).removeClass( "bg-info" ).children().removeClass( "text-white");
+  $( this ).addClass( "bg-light" );
 });
 
 // add keyboard control
@@ -41,7 +84,7 @@ $("body").keypress(function(e) {
   if (e.which === 13 || e.which === 61) {
     equal();
   }
-})
+});
 
 // function delete operation
 var ce = () => {
@@ -49,7 +92,7 @@ var ce = () => {
   result = 0;
 };
 
-// operation display function 
+// operation display function
 var myOperation = () => {
   result = "";
   calcul.forEach(function(e){
@@ -66,5 +109,8 @@ var equal = () => {
 }
 
 // for test if the document is ready !
-console.log( "the document is ready!" );
+console.log(
+  "%cDocument is ready",
+  "color:white;font-family:system-ui;font-size:2rem;-webkit-text-stroke: 1px black;font-weight:bold"
+);
 });
